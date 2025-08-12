@@ -42,7 +42,7 @@ materials_df = load_materials()
 shaft_sizes_df = load_shaft_sizes()
 
 st.set_page_config(page_title="Shaft Diameter Tutor", layout="wide")
-st.title("🔧 Shaft Diameter Interactive Tutor")
+st.title("🔧 Shaft Diameter Interactive Designer")
 st.markdown("Input parameters in the sidebar and see the results and diagrams below.")
 
 with st.sidebar:
