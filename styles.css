@@ -1,0 +1,156 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto&display=swap');
+
+:root {
+    --color-bg: #F9FAFB; /* light gray background */
+    --color-card-bg: #FFFFFF; /* white cards */
+    --color-primary: #2C3E50; /* dark blue-gray */
+    --color-secondary: #18A999; /* teal accent */
+    --color-text-primary: #34495E; /* dark slate gray text */
+    --color-text-secondary: #7F8C8D; /* medium gray */
+    --color-border-shadow: rgba(44, 62, 80, 0.1); /* subtle shadow */
+}
+
+/* Global styles */
+body, .main {
+    background-color: var(--color-bg);
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem; /* 40px */
+}
+
+h2 {
+    font-size: 2rem; /* 32px */
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+}
+
+/* Cards */
+.card {
+    background-color: var(--color-card-bg);
+    padding: 20px 25px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--color-border-shadow);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 24px var(--color-border-shadow);
+}
+
+/* Streamlit metric styling */
+[data-testid="stMetricValue"] {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.25rem !important; /* 20px */
+    color: var(--color-secondary) !important;
+}
+
+
+
+/* Compact card for diagrams */
+.card img,
+.card canvas {
+    max-width: 95%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px var(--color-border-shadow);
+    background-color: #fefefe; /* very slight off-white behind diagrams */
+    padding: 8px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Streamlit pyplot container adjustment for compactness */
+.stPlotlyChart, .stImage, .stCanvas, .stPyplot {
+    padding: 6px 0 !important;
+}
+
+/* Smaller margins for diagram containers */
+.stContainer > .card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Buttons and inputs */
+button, input, select, textarea {
+    font-family: 'Roboto', sans-serif;
+    border-radius: 6px !important;
+    border: 1.5px solid var(--color-border-shadow) !important;
+    padding: 8px 14px !important;
+    color: var(--color-text-primary);
+    background-color: var(--color-card-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus style for inputs */
+button:focus, input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--color-secondary) !important;
+    box-shadow: 0 0 6px var(--color-secondary);
+}
+
+/* Checkbox label style */
+.stCheckbox > label {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+/* Scrollbar styling for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-shadow);
+    border-radius: 10px;
+}
+
+/* Links */
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background-color: #e1e7e9; /* slightly darker light gray */
+    border-radius: 0 12px 12px 0;
+    padding: 25px 20px 40px 20px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 3px 0 10px rgba(44, 62, 80, 0.1);
+    color: #34495E;
+}
+
+
+/* Sidebar headers */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+}
