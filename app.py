@@ -21,13 +21,13 @@ from src.visuals.visuals import (
     shaft_overview_diagram
 )
 
-# Helper to load external CSS file
+
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Load external CSS file (make sure styles.css is in the same directory)
-local_css("styles.css")
+
+# local_css("styles.css")
 
 # Load data with caching
 @st.cache_data
@@ -59,7 +59,7 @@ with st.sidebar:
     additional_bm = st.number_input("Additional Bending Moment (N·mm)", 0.0)
     additional_tm = st.number_input("Additional Torsional Moment (N·m)", 0.0)
 
-# Collect gears input inside card containers
+# Collect gears input
 gears = []
 for i in range(num_gears):
     with st.container():
@@ -76,7 +76,7 @@ for i in range(num_gears):
             pos = st.number_input(f"Gear #{i+1} Position from Left Bearing (mm)", 0.0, shaft_length, 200.0, key=f"pos_dia_{i}")
             gears.append({"diameter": dia, "pressure_angle": pa, "position": pos})
 
-# Collect pulleys input inside card containers
+# Collect pulleys input
 pulleys = []
 for i in range(num_pulleys):
     with st.container():
@@ -86,7 +86,7 @@ for i in range(num_pulleys):
         pos = st.number_input(f"Pulley #{i+1} Position from Left Bearing (mm)", 0.0, shaft_length, 500.0, key=f"ppos_{i}")
         pulleys.append({"diameter": dia, "belt_tension_ratio": btr, "position": pos})
 
-# --- Shaft Overview Diagram at the very top ---
+
 
 gear_positions_m = []
 for g in gears:
@@ -113,7 +113,7 @@ with st.container():
     st.markdown('<div class="card"><h3>Shaft Overview</h3></div>', unsafe_allow_html=True)
     st.pyplot(fig_overview)
 
-# --- Calculations ---
+
 
 with st.spinner("Calculating shaft parameters..."):
     torque = torque_from_power(power_kW, rpm)
@@ -215,23 +215,23 @@ else:
 
 if gears or pulleys:
     st.markdown('<div class="card"><h3>Side Views</h3></div>', unsafe_allow_html=True)
-    # Use columns, max 3 per row
+
     items = []
-    # Prepare gear side view figs
+
     for i, g in enumerate(gears):
         if "diameter" in g:
             fig = gear_side_view(g["diameter"], g["pressure_angle"])
             items.append(("Gear Side View #" + str(i+1), fig))
         else:
-            # No side view if only Ft known
+
             pass
 
-    # Prepare pulley side view figs
+
     for i, p in enumerate(pulleys):
         fig = pulley_side_view(p["diameter"], p["belt_tension_ratio"])
         items.append(("Pulley Side View #" + str(i+1), fig))
 
-    # Display side views in rows with max 3 per row
+
     for i in range(0, len(items), 3):
         cols = st.columns(min(3, len(items) - i))
         for col, (title, fig) in zip(cols, items[i:i+3]):
